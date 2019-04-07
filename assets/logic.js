@@ -9,6 +9,38 @@
   };
   firebase.initializeApp(config);
 
+  var database = firebase.database();
+
+  //Onclick function to add train when button is clicked
+  document.querySelector("#add-train").addEventListener("click", function(event) {
+    event.preventDefault();
+
+ // Grabs user input
+ var trainInput = document.querySelector("#name-input").value.trim();
+ var destinationInput = document.querySelector("#destination-input").value.trim();
+ //******/Need to Add moment and time structure********
+ //********************************************************** */
+ var timeInput = document.querySelector("#time-input").value.trim();
+ var frequencyInput = document.querySelector("#frequency-input").value.trim();
+
+  // Holds train data
+  var newTrain = {
+    train: trainInput,
+    destination: destinationInput,
+    time: timeInput,
+    frequency: frequencyInput
+  };
+
+  // Uploads employee data to the database
+  database.ref().push(newTrain);
+
+  // Logs everything to console
+  console.log(newTrain.train);
+  console.log(newTrain.destination);
+  console.log(newTrain.time);
+  console.log(newTrain.frequency);
+
+});
 //Need to have form and submit button
 //Form name should include: Train Name, Destination, 
 //First Train Time -- in military time, Frequency -- in minutes
