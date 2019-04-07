@@ -37,8 +37,6 @@ document.querySelector("#add-train").addEventListener("click", function (event) 
   console.log(newTrain.destination);
   console.log(newTrain.time);
   console.log(newTrain.frequency);
-  //alert
-  alert("Train successfully added");
 
   // Need to clear text box when train is added
   document.querySelector("#name-input").value = "";
@@ -57,18 +55,18 @@ database.ref().on("child_added", function (childSnapshot) {
   var timeInput = childSnapshot.val().time;
   var frequencyInput = childSnapshot.val().frequency;
 
-  // Employee Info
   console.log(trainInput);
   console.log(destinationInput);
   console.log(timeInput);
   console.log(frequencyInput);
 
-    //******/Need to Add moment and time structure********
+  //******/Need to Add moment and time structure********
 
   //empty strings for minutesaway until next train
   var minsAway;
-
-  var firstTrain = moment(timeInput, "hh:mm");
+  //need to put in subtract 1 years for first train times that are after current time, 
+  //otherwise will not calculate properly
+  var firstTrain = moment(timeInput, "hh:mm").subtract(1, "years");
   // Difference in time between the current and firstTrain
   var diffTime = moment().diff(moment(firstTrain), "minutes");
   var remainder = diffTime % frequencyInput;
@@ -88,28 +86,18 @@ database.ref().on("child_added", function (childSnapshot) {
     minsAway: minsAway
   };
   console.log(tempTrainData);
-
-
+//stores row in variable
   var newRow = document.createElement("tr");
 
-
-
   // Loop through the childSnapshot object
-
-  for (let empdata of Object.values(tempTrainData)) {
+//This adds data in column inHTML
+  for (let data of Object.values(tempTrainData)) {
     let newTd = document.createElement("td");
-    newTd.innerText = empdata;
+    newTd.innerText = data;
     newRow.appendChild(newTd);
   }
 
   // Append the new row to the table
   document.querySelector("#train-table > tbody").appendChild(newRow);
 });
-//Need to have form and submit button
-//Form name should include: Train Name, Destination, 
-//First Train Time -- in military time, Frequency -- in minutes
-//Need to be able to store and push text into html display for relevant fields
-//Need to be able to sync up train time with realtime
-//current wait time should reflect with train interval and real time
-//Need to have click function to start timer when button clicked for train time
-//Click function should also store and push text into html
+
