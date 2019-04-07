@@ -1,3 +1,13 @@
+//Initialize firebase
+  var config = {
+    apiKey: "AIzaSyAmCRAqaUL7QpIkPPSn2sqAj9hjCRse8ws",
+    authDomain: "employeeproject-21f77.firebaseapp.com",
+    databaseURL: "https://employeeproject-21f77.firebaseio.com",
+    projectId: "employeeproject-21f77",
+    storageBucket: "employeeproject-21f77.appspot.com",
+    messagingSenderId: "842985455265"
+  };
+  firebase.initializeApp(config);
 
 //Need to have form and submit button
 //Form name should include: Train Name, Destination, 
