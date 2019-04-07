@@ -31,7 +31,7 @@
     frequency: frequencyInput
   };
 
-  // Uploads employee data to the database
+  // Uploads data to the Firebase database
   database.ref().push(newTrain);
 
   // Logs everything to console
@@ -39,7 +39,50 @@
   console.log(newTrain.destination);
   console.log(newTrain.time);
   console.log(newTrain.frequency);
+//alert
+  alert("Train successfully added");
 
+    // Need to clear text box when train is added
+    document.querySelector("#name-input").value = "";
+    document.querySelector("#destination-input").value = "";
+    document.querySelector("#time-input").value = "";
+    document.querySelector("#frequency-input").value = "";
+  });
+
+  // Create Firebase event for adding employee to the database and a row in the html when a user adds an entry
+database.ref().on("child_added", function(childSnapshot) {
+    console.log(childSnapshot.val());
+  
+    // Store everything into a variable.
+    var trainInput = childSnapshot.val().train;
+    var destinationInput = childSnapshot.val().destination;
+    var timeInput = childSnapshot.val().time;
+    var frequencyInput = childSnapshot.val().frequency;
+  
+    // Employee Info
+    console.log(trainInput);
+    console.log(destinationInput);
+    console.log(timeInput);
+    console.log(frequencyInput);
+
+     // create a temp object of our values
+  let tempEmployeeData = {
+    train: trainInput,
+    destination: destinationInput,
+  };
+
+var newRow = document.createElement("tr");
+
+  // Loop through the childSnapshot object
+
+  for (let prop of Object.values(tempEmployeeData)) {
+    let newTd = document.createElement("td");
+    newTd.innerText = prop;
+    newRow.appendChild(newTd);
+  }
+
+  // Append the new row to the table
+  document.querySelector("#train-table > tbody").appendChild(newRow);
 });
 //Need to have form and submit button
 //Form name should include: Train Name, Destination, 
