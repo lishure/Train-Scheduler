@@ -66,18 +66,19 @@ database.ref().on("child_added", function(childSnapshot) {
     console.log(frequencyInput);
 
      // create a temp object of our values
-  let tempEmployeeData = {
+  let tempTrainData = {
     train: trainInput,
     destination: destinationInput,
+    frequency: frequencyInput
   };
 
 var newRow = document.createElement("tr");
 
   // Loop through the childSnapshot object
 
-  for (let prop of Object.values(tempEmployeeData)) {
+  for (let empdata of Object.values(tempTrainData)) {
     let newTd = document.createElement("td");
-    newTd.innerText = prop;
+    newTd.innerText = empdata;
     newRow.appendChild(newTd);
   }
 

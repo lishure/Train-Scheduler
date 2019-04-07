@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="assets/style.css">
   <script src="https://www.gstatic.com/firebasejs/4.12.0/firebase.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment-with-locales.min.js"></script>
 </head>
 
 <body>
@@ -61,19 +62,19 @@
             <form role="form">
               <div class="form-group row">
                 <label for="name-input">Train Name:</label>
-                <input class="form-control" id="name-input" type="name">
+                <input class="form-control" id="name-input" type="text">
               </div>
               <div class="form-group row">
                 <label for="destination-input">Destination:</label>
-                <input class="form-control" id="destination-input" type="destination">
+                <input class="form-control" id="destination-input" type="text">
               </div>
               <div class="form-group row">
                 <label for="time-input">First Train Time (HH:mm-Military Time)</label>
-                <input class="form-control" id="time-input" type="time">
+                <input class="form-control" id="time-input" type="text">
               </div>
               <div class="form-group row">
                 <label for="frequency-input">Frequency (min)</label>
-                <input class="form-control" id="frequency-input" type="frequency"></textarea>
+                <input class="form-control" id="frequency-input" type="text"></textarea>
               </div>
               <button class="btn btn-default" id="add-train" type="submit">Submit</button>
             </form>
