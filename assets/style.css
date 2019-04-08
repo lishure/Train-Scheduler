@@ -1,6 +1,6 @@
 #jumbotron {
     text-align: center;
-    background: brown;
+    background: blueviolet;
 }
 
 h1 {
@@ -13,4 +13,9 @@ h5 {
     color: white;
     font-weight: bold;
     font-size: 16px;
+}
+
+body {
+    background: URL(../images/polar.jpg);
+    background-size: cover;
 }
